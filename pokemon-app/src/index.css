@@ -1,0 +1,626 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Noto Sans KR', 'Inter', sans-serif;
+  background-color: #0a0a1a;
+  color: #f0f0f0;
+}
+
+/* ===== Pokemon Type Colors ===== */
+.type-normal {
+  background-color: #A8A77A;
+}
+
+.type-fire {
+  background-color: #EE8130;
+}
+
+.type-water {
+  background-color: #6390F0;
+}
+
+.type-electric {
+  background-color: #F7D02C;
+  color: #000 !important;
+}
+
+.type-grass {
+  background-color: #7AC74C;
+}
+
+.type-ice {
+  background-color: #96D9D6;
+  color: #000 !important;
+}
+
+.type-fighting {
+  background-color: #C22E28;
+}
+
+.type-poison {
+  background-color: #A33EA1;
+}
+
+.type-ground {
+  background-color: #E2BF65;
+  color: #000 !important;
+}
+
+.type-flying {
+  background-color: #A98FF3;
+}
+
+.type-psychic {
+  background-color: #F95587;
+}
+
+.type-bug {
+  background-color: #A6B91A;
+}
+
+.type-rock {
+  background-color: #B6A136;
+}
+
+.type-ghost {
+  background-color: #735797;
+}
+
+.type-dragon {
+  background-color: #6F35FC;
+}
+
+.type-dark {
+  background-color: #705746;
+}
+
+.type-steel {
+  background-color: #B7B7CE;
+  color: #000 !important;
+}
+
+.type-fairy {
+  background-color: #D685AD;
+}
+
+/* ===== Silhouette Effect ===== */
+.shadow-silhouette {
+  filter: brightness(0) invert(0) !important;
+}
+
+/* ===== Pokeball Loader ===== */
+.pokeball-spin {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border-top: 8px solid #EE1515;
+  border-bottom: 8px solid #EE1515;
+  border-left: 8px solid #222;
+  border-right: 8px solid #222;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Type Click Effects ===== */
+
+/* 불꽃 – 화염방사 */
+@keyframes fireBlast {
+  0% {
+    box-shadow: 0 0 0 0 rgba(238, 129, 48, 0.9);
+    filter: brightness(1);
+  }
+
+  30% {
+    box-shadow: 0 0 40px 30px rgba(238, 129, 48, 0.7), 0 0 80px 60px rgba(255, 50, 0, 0.4);
+    filter: brightness(1.6);
+  }
+
+  60% {
+    box-shadow: 0 0 60px 50px rgba(255, 80, 0, 0.3);
+    filter: brightness(1.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(238, 129, 48, 0);
+    filter: brightness(1);
+  }
+}
+
+.effect-fire {
+  animation: fireBlast 0.7s ease-out;
+}
+
+/* 전기 – 백만볼트 */
+@keyframes electricBolt {
+
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow: none;
+  }
+
+  20% {
+    filter: brightness(2.5) saturate(3);
+    box-shadow: 0 0 40px 20px rgba(247, 208, 44, 1);
+  }
+
+  40% {
+    filter: brightness(1);
+    box-shadow: none;
+  }
+
+  60% {
+    filter: brightness(2.5) saturate(3);
+    box-shadow: 0 0 40px 20px rgba(247, 208, 44, 1);
+  }
+}
+
+.effect-electric {
+  animation: electricBolt 0.5s ease-out;
+}
+
+/* 풀 – 솔라빔 */
+@keyframes grassBeam {
+  0% {
+    box-shadow: 0 0 0 0 rgba(122, 199, 76, 0.9);
+    filter: brightness(1);
+  }
+
+  50% {
+    box-shadow: 0 0 50px 30px rgba(122, 199, 76, 0.7);
+    filter: brightness(1.5) hue-rotate(20deg);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(122, 199, 76, 0);
+    filter: brightness(1);
+  }
+}
+
+.effect-grass {
+  animation: grassBeam 0.6s ease-out;
+}
+
+/* 물 – 하이드로펌프 */
+@keyframes waterSplash {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(99, 144, 240, 0.9);
+  }
+
+  40% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px 20px rgba(99, 144, 240, 0.7);
+  }
+
+  80% {
+    transform: scale(0.95);
+    box-shadow: 0 0 60px 40px rgba(99, 144, 240, 0.3);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(99, 144, 240, 0);
+  }
+}
+
+.effect-water {
+  animation: waterSplash 0.7s ease-out;
+}
+
+/* 얼음 – 냉동빔 */
+@keyframes iceFreeze {
+
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+
+  50% {
+    filter: brightness(1.4) saturate(0.3) hue-rotate(200deg);
+    box-shadow: 0 0 40px 20px rgba(150, 217, 214, 0.9);
+  }
+}
+
+.effect-ice {
+  animation: iceFreeze 0.6s ease-out;
+}
+
+/* 격투 – 기합탄 */
+@keyframes fightingPunch {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.15) rotate(-3deg);
+  }
+
+  50% {
+    transform: scale(0.9) rotate(3deg);
+    box-shadow: 0 0 30px 15px rgba(194, 46, 40, 0.8);
+  }
+
+  75% {
+    transform: scale(1.05) rotate(-1deg);
+  }
+}
+
+.effect-fighting {
+  animation: fightingPunch 0.5s ease-out;
+}
+
+/* 독 – 독가루 */
+@keyframes poisonGas {
+  0% {
+    filter: brightness(1) saturate(1);
+  }
+
+  50% {
+    filter: brightness(1.3) saturate(2) hue-rotate(270deg);
+    box-shadow: 0 0 40px 20px rgba(163, 62, 161, 0.7);
+  }
+
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+}
+
+.effect-poison {
+  animation: poisonGas 0.6s ease-out;
+}
+
+/* 땅 – 지진 */
+@keyframes groundQuake {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-4px, 4px);
+    box-shadow: 0 10px 30px rgba(226, 191, 101, 0.9);
+  }
+
+  30% {
+    transform: translate(4px, -4px);
+  }
+
+  50% {
+    transform: translate(-5px, 3px);
+  }
+
+  70% {
+    transform: translate(3px, -5px);
+  }
+
+  90% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+.effect-ground {
+  animation: groundQuake 0.6s ease-out;
+}
+
+/* 비행 – 폭풍 */
+@keyframes flyingWind {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+
+  30% {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(169, 143, 243, 0.7);
+  }
+
+  70% {
+    transform: scale(0.95) translateY(4px);
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.effect-flying {
+  animation: flyingWind 0.6s ease-out;
+}
+
+/* 에스퍼 – 사이코키네시스 */
+@keyframes psychicWave {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  33% {
+    transform: scale(1.1) rotate(3deg);
+    filter: brightness(1.5) saturate(2);
+    box-shadow: 0 0 40px 20px rgba(249, 85, 135, 0.8);
+  }
+
+  66% {
+    transform: scale(0.92) rotate(-3deg);
+    filter: brightness(1.3);
+  }
+}
+
+.effect-psychic {
+  animation: psychicWave 0.7s ease-out;
+}
+
+/* 벌레 */
+@keyframes bugSwarm {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.3) hue-rotate(60deg);
+    box-shadow: 0 0 30px 15px rgba(166, 185, 26, 0.7);
+  }
+}
+
+.effect-bug {
+  animation: bugSwarm 0.5s ease-out;
+}
+
+/* 바위 – 스톤엣지 */
+@keyframes rockEdge {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.12) skewX(-5deg);
+    box-shadow: 0 0 30px 10px rgba(182, 161, 54, 0.8);
+  }
+
+  50% {
+    transform: scale(0.92) skewX(5deg);
+  }
+
+  100% {
+    transform: scale(1) skewX(0);
+  }
+}
+
+.effect-rock {
+  animation: rockEdge 0.5s ease-out;
+}
+
+/* 고스트 – 섀도볼 */
+@keyframes ghostShadow {
+  0% {
+    filter: brightness(1) opacity(1);
+  }
+
+  30% {
+    filter: brightness(0.3) opacity(0.7);
+    box-shadow: 0 0 50px 30px rgba(115, 87, 151, 0.9);
+  }
+
+  60% {
+    filter: brightness(1.5) opacity(1);
+  }
+
+  100% {
+    filter: brightness(1) opacity(1);
+  }
+}
+
+.effect-ghost {
+  animation: ghostShadow 0.7s ease-out;
+}
+
+/* 드래곤 – 용성군 */
+@keyframes dragonMeteor {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+    box-shadow: none;
+  }
+
+  50% {
+    transform: scale(1.15);
+    filter: brightness(1.8);
+    box-shadow: 0 0 60px 30px rgba(111, 53, 252, 0.9);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+    box-shadow: none;
+  }
+}
+
+.effect-dragon {
+  animation: dragonMeteor 0.7s ease-out;
+}
+
+/* 악 – 뻥카 */
+@keyframes darkSnarl {
+
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(0.4);
+    box-shadow: 0 0 40px 20px rgba(112, 87, 70, 0.9);
+  }
+}
+
+.effect-dark {
+  animation: darkSnarl 0.5s ease-out;
+}
+
+/* 강철 – 아이언헤드 */
+@keyframes steelHead {
+
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: brightness(1);
+  }
+
+  20% {
+    transform: translateX(-8px);
+  }
+
+  40% {
+    transform: translateX(8px);
+    filter: brightness(1.5) saturate(0.5);
+    box-shadow: 0 0 30px 15px rgba(183, 183, 206, 0.9);
+  }
+
+  80% {
+    transform: translateX(-3px);
+  }
+}
+
+.effect-steel {
+  animation: steelHead 0.5s ease-out;
+}
+
+/* 페어리 – 문포스 */
+@keyframes fairyMoon {
+
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+    box-shadow: none;
+  }
+
+  50% {
+    filter: brightness(1.6) saturate(2) hue-rotate(-30deg);
+    box-shadow: 0 0 50px 25px rgba(214, 133, 173, 0.8);
+  }
+}
+
+.effect-fairy {
+  animation: fairyMoon 0.6s ease-out;
+}
+
+/* 노말 – 몸통박치기 */
+@keyframes normalSlam {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.12);
+    box-shadow: 0 0 20px 10px rgba(168, 167, 122, 0.8);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+}
+
+.effect-normal {
+  animation: normalSlam 0.4s ease-out;
+}
+
+/* ===== 오답 효과 ===== */
+@keyframes wrongShake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: saturate(1);
+  }
+
+  15% {
+    transform: translateX(-8px) translateY(2px);
+    filter: saturate(0) brightness(0.7);
+  }
+
+  30% {
+    transform: translateX(8px) translateY(-2px);
+  }
+
+  45% {
+    transform: translateX(-6px);
+    filter: saturate(0.2);
+  }
+
+  60% {
+    transform: translateX(6px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+.effect-wrong {
+  animation: wrongShake 0.5s ease-out;
+}
+
+/* ===== 전체 플래시 (정답) ===== */
+@keyframes screenFlash {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.screen-flash {
+  animation: screenFlash 0.5s ease-out;
+}
+
+/* ===== 포켓몬 카드 호버 ===== */
+.pokemon-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== 스크롤바 스타일 ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EE1515;
+  border-radius: 4px;
+}

@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/PocketmonProject/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

@@ -234,7 +234,7 @@ export default function QuizName() {
           {!trainer && (
             <div className="mt-4 bg-yellow-500/10 border border-yellow-500/40 rounded-2xl px-5 py-3 text-sm">
               <span className="text-yellow-400 font-bold">🔑 로그인하면 점수와 포획 기록이 저장돼요!</span>
-              <a href="/PocketmonProject/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
+              <a href="/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
             </div>
           )}
         </motion.div>

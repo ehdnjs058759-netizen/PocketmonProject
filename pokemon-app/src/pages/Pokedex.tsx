@@ -66,7 +66,7 @@ export default function Pokedex() {
             {!trainer && (
                 <div className="max-w-lg mx-auto mb-6 bg-yellow-500/10 border border-yellow-500/40 rounded-2xl px-5 py-3 text-sm text-center">
                     <span className="text-yellow-400 font-bold">🔑 로그인하면 퀴즈에서 맞춘 포켓몬을 나의 도감에 저장할 수 있어요!</span>
-                    <a href="/PocketmonProject/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
+                    <a href="/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
                 </div>
             )}
 

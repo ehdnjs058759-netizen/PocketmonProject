@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getKoreanNames } from '../api/koreanNames';
 import { REGIONS } from '../data/regions';
+import { useAuthStore } from '../store/authStore';
 
 const TYPE_KO: Record<string, string> = {
     normal: '노말', fire: '불꽃', water: '물', electric: '전기', grass: '풀',
@@ -11,6 +12,7 @@ const TYPE_KO: Record<string, string> = {
 };
 
 export default function Pokedex() {
+    const { trainer } = useAuthStore();
     const [selectedRegion, setSelectedRegion] = useState(REGIONS[0]);
     const [pokemonList, setPokemonList] = useState<any[]>([]);
     const [koNames, setKoNames] = useState<Record<number, string>>({});
@@ -58,9 +60,15 @@ export default function Pokedex() {
 
     return (
         <div className="py-8">
-            <h1 className="text-4xl font-black mb-8 text-center text-white">
+            <h1 className="text-4xl font-black mb-4 text-center text-white">
                 📖 포켓몬 도감
             </h1>
+            {!trainer && (
+                <div className="max-w-lg mx-auto mb-6 bg-yellow-500/10 border border-yellow-500/40 rounded-2xl px-5 py-3 text-sm text-center">
+                    <span className="text-yellow-400 font-bold">🔑 로그인하면 퀴즈에서 맞춘 포켓몬을 나의 도감에 저장할 수 있어요!</span>
+                    <a href="/PocketmonProject/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
+                </div>
+            )}
 
             {/* 지방 탭 */}
             <div className="flex flex-wrap gap-2 justify-center mb-8">

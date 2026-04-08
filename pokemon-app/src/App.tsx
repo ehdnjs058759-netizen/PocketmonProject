@@ -234,11 +234,11 @@ function AppContent() {
               <main className="flex-1 container mx-auto p-4 sm:p-6 w-full max-w-7xl">
                 <Routes>
                   <Route path="/"            element={<RequireAuth><Home /></RequireAuth>} />
-                  <Route path="/pokedex"     element={<RequireAuth><Pokedex /></RequireAuth>} />
+                  <Route path="/pokedex"     element={<Pokedex />} />
                   <Route path="/quiz-shadow" element={<RequireAuth><QuizShadow /></RequireAuth>} />
                   <Route path="/quiz-type"   element={<RequireAuth><QuizType /></RequireAuth>} />
                   <Route path="/mypokedex"   element={<RequireAuth><MyPokedex /></RequireAuth>} />
-                  <Route path="/quiz-name"   element={<RequireAuth><QuizName /></RequireAuth>} />
+                  <Route path="/quiz-name"   element={<QuizName />} />
                   <Route path="/daily"       element={<RequireAuth><DailyChallenge /></RequireAuth>} />
                   <Route path="/about"       element={<About />} />
                   <Route path="/privacy"     element={<PrivacyPolicy />} />

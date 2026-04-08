@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../store/gameStore';
+import { useAuthStore } from '../store/authStore';
 import { getKoreanName } from '../api/koreanNames';
 import { MAX_POKEMON } from '../data/regions';
 
@@ -72,6 +73,7 @@ interface AnswerRecord {
 // ── 컴포넌트 ──────────────────────────────────────────────────
 export default function QuizName() {
   const navigate = useNavigate();
+  const { trainer } = useAuthStore();
   const { addCaptured, recordCorrect, recordWrong } = useGameStore();
 
   // ── 페이즈 ──
@@ -229,6 +231,12 @@ export default function QuizName() {
           <h1 className="text-5xl font-black text-white mb-3">📝 이름 맞추기!</h1>
           <p className="text-gray-400 text-lg">포켓몬 이미지를 보고 <span className="text-yellow-400 font-bold">5초 안에</span> 이름을 입력하세요!</p>
           <p className="text-gray-500 text-sm mt-1">한국어 이름 또는 영문명 모두 정답!</p>
+          {!trainer && (
+            <div className="mt-4 bg-yellow-500/10 border border-yellow-500/40 rounded-2xl px-5 py-3 text-sm">
+              <span className="text-yellow-400 font-bold">🔑 로그인하면 점수와 포획 기록이 저장돼요!</span>
+              <a href="/PocketmonProject/login" className="ml-2 underline text-yellow-300 hover:text-yellow-200">로그인하기</a>
+            </div>
+          )}
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-2xl">
